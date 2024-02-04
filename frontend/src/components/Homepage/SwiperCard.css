@@ -1,0 +1,80 @@
+
+
+.swiper-container {
+  width: 100%;
+  margin: auto;
+}
+
+.swiper-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Adjust the width to fill the container */
+  height: 80vh; /* Set the height to 50% of the viewport height */
+  
+  border: 1px solid #000000;
+  background: linear-gradient(45deg, #000000, #000000);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%; /* Ensure the image takes up the full width of the container */
+  height: auto; /* Allow the height to adjust proportionally */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Responsive design for smaller screens */
+
+@media (max-width: 600px) {
+  .swiper-card {
+    height: 20vh; /* Adjust height for smaller screens */
+  }
+  .card-image{
+    height: 20vh;
+  }
+}
+
+@media (min-width:600px) and (max-width:700px)
+{
+  .swiper-card{
+    height : 30vh;
+  }
+
+  .card-image{
+    height : 30vh;
+  }
+}
+@media (min-width:700px) and (max-width:1535px) {
+  .swiper-card {
+    height: 40vh; /* Adjust height for smaller screens */
+  }
+  .card-image{
+    height: 40vh;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* .slick-dots {
+  bottom: 10px;
+}
+
+.slick-dots li button:before {
+  color: #f0f0f0;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #fff; 
+} */

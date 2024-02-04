@@ -1,0 +1,31 @@
+const vendors = [
+
+    {
+        vendor_name:"suraj kumar",
+        vendor_phone:99999999,
+        vendor_email:"vendor@gmail.com",
+        vendor_shop_name: "ABC auto parts",
+        vendor_address: "mpeb colony khandwa road khargone",
+        vendor_service:[{service1:500,service2:1000,service3:320}]
+    },
+    
+    {
+        vendor_name:"suraj kumar",
+        vendor_phone:99999999,
+        vendor_email:"vendor@gmail.com",
+        vendor_shop_name: "ABC auto parts",
+        vendor_address: "mpeb colony khandwa road khargone",
+        vendor_service:[{service1:500,service2:1000,service3:320}]
+    },
+    
+    {
+        vendor_name:"suraj kumar",
+        vendor_phone:99999999,
+        vendor_email:"vendor@gmail.com",
+        vendor_shop_name: "ABC auto parts",
+        vendor_address: "mpeb colony khandwa road khargone",
+        vendor_service:[{service1:500,service2:1000,service3:320}]
+    },
+    
+
+]

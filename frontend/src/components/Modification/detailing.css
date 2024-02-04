@@ -1,0 +1,52 @@
+
+
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 200px;
+  }
+  .swiper-slide{
+      background-color: white;
+      
+  }
+  .swiper-slide .btn{
+    background-color: #686868; 
+    color: white;
+    
+}
+  .swiper-slide-active{
+    
+    background: linear-gradient(106deg, #646464 0.95%, #000 98.81%);
+  
+    
+  }
+  
+
+  .swiper-slide-active .service_name{
+    
+   color: white;
+   
+  }
+  .swiper-slide-active .service_description{
+    
+   color: white;
+  }
+  .swiper-slide-active .btn{
+    
+    background-color: white; 
+    color: black;
+ }
+
+  
+  .swiper-slide img {
+    display: block;
+    /* width: 100%; */
+  }
+  
