@@ -28,13 +28,9 @@ function AuthModal() {
     });
     const json = await response.json();
     if (json.success) {
-      setLoading(false);
-      
-      localStorage.setItem('token', json.authtoken);
-      
+      setLoading(false); 
+      localStorage.setItem('token', json.authtoken); 
       navigate('/');
-    
-      
     }
     else {
       setLoading(false);

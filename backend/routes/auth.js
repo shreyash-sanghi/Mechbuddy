@@ -15,6 +15,7 @@ router.post('/logout' , (req,res) => {
   res.cookie('token' , ' ',{ httpOnly: true, sameSite: 'none' , secure:'true'}).json(true);
   
 });
+
 // User Signup endpoint
 router.post('/usersignup', async (req, res) => {
   let success = false;
@@ -74,6 +75,7 @@ router.post('/userlogin', async (req, res) => {
     res.status(500).json({ success, error: err.message });
   }
 }); 
+
 //User details usertoken
 router.get('/userinfo', verifyToken, async (req, res) => {
   try {

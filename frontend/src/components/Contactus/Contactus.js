@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 const Contactus = () => {
 
   const [loading, setLoading] = useState(false);
-
+  const [initial,final] = useState("");
+  const [initialhtml,finalhtml]= useState("");
   const form = useRef();
 
   const notify = () => toast.success('Your Query Has Received !', {
@@ -28,12 +29,31 @@ const Contactus = () => {
       .then((result) => {
         notify();     
         setLoading(false);
-      }, (error) => {
-        
+      }, (error) => {    
         setLoading(false);
       });
   };
 
+  //controle email error
+  const emailError = document.getElementById("email_error");
+  function validateEmail(e){
+     const emailvalue = e.target.value;
+     console.log(emailvalue)
+     final(emailvalue)
+     if(emailvalue != " " && emailError!=null){
+      if(!emailvalue.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
+        emailError.innerHTML = "Please enter a valid email";
+        finalhtml(emailError.innerHTML)
+        return false;
+      }
+      emailError.innerHTML = "";
+      finalhtml(emailError.innerHTML)
+      return true;
+    }
+    else{
+      finalhtml("")
+    }
+  }
   return (
     <div className="bg-[#fff] h-screen flex flex-col 500:flex-row 500:justify-between 500:h-screen">
       <div className="flex flex-col 500:w-[70%]">
@@ -44,8 +64,9 @@ const Contactus = () => {
           <form ref={form} onSubmit={sendEmail} class="space-y-8">
             <div>
               <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your email</label>
-              <input type="email" name="email" id="email" class="shadow-sm bg-[#F2F2F2] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 " placeholder="name@mechbuddy.com" required style={{ boxShadow: '2px 2px 8px 0px #BDC3C7 inset, 4px 4px 8px 0px #FFF' }} />
+              <input type="email" value={initial}  name="email" id="email" onChange={validateEmail} class="shadow-sm bg-[#F2F2F2] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 " placeholder="name@mechbuddy.com" required style={{ boxShadow: '2px 2px 8px 0px #BDC3C7 inset, 4px 4px 8px 0px #FFF' }} />
             </div>
+            <span dangerouslySetInnerHTML={{ __html:initialhtml }} className="text-red-500" id="email_error"></span>
             <div>
               <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 ">Subject</label>
               <input type="text" name="subject" id="subject" class="block p-3 w-full text-sm text-gray-900 bg-[#F2F2F2] rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 " placeholder="Let us know how we can help you" required style={{ boxShadow: '2px 2px 8px 0px #BDC3C7 inset, 4px 4px 8px 0px #FFF' }} />
