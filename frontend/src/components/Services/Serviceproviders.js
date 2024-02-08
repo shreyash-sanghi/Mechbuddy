@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { DotSpinner } from "@uiball/loaders";
+import axios from 'axios';
 
 export default function Serviceproviders() {
   const [vendor, setVendor] = useState([]);
@@ -82,18 +83,13 @@ export default function Serviceproviders() {
     ],
   };
   // Replace the existing data with the mockData
-  const { vendor: mockVendor } = mockData;
+  // const { vendor: mockVendor } = mockData;
 
-  // useEffect(() => {
-  //     fetchSpares();
-  // }, [])
 
   // const fetchSpares = async () => {
   //     try {
-
-  //         setLoading(true);
+  //         // setLoading(true);
   //         let serviceApi = 'http://localhost:8000/api/auth/getvendor';
-
   //         const response = await fetch(serviceApi, {
   //             method: "GET",
   //             headers: {
@@ -101,20 +97,62 @@ export default function Serviceproviders() {
   //             },
   //         });
   //         const json = await response.json();
-  //         if (json.success) {
+  //          console.log(json);
 
-  //             setLoading(false);
+  //         // if (json.success) {
 
-  //             setVendor(json.vendors)
-  //         }
-  //         else {
-  //             setLoading(false);
-  //             alert('error')
-  //         }
+  //         //     setLoading(false);
+
+  //         //     setVendor(json.vendors)
+  //         // }
+  //         // else {
+  //         //     setLoading(false);
+  //         //     alert('error')
+  //         // }
   //     } catch (error) {
 
   //     }
   // }
+
+  //   useEffect(() => {
+  //     fetchSpares();
+  // }, [])
+
+  const [initial, final] = useState([{
+    Vid:"",
+    shop_name: "",
+    shop_address: "",
+    vendor_average_price: "",
+    service_category: ""
+}])
+
+
+const getdata = async () => {
+    try {
+      setLoading(true);
+        const result = await axios.get("http://localhost:8000/api/auth/get_vendors");
+        const vandors = result.data.vendors;
+        if(vandors){
+        vandors.map((data) => {
+            final((info) => [
+                ...info, {
+                   Vid:data._id,
+                    shop_name:data.shop_name,
+                    shop_address: data.shop_address,
+                    vendor_average_price: data.vendor_average_price,
+                    service_category: data.service_category
+                }
+            ])
+        })
+        setLoading(false);
+      }
+    } catch (error) {
+        alert(error);
+    }
+}
+useEffect(() => {
+    getdata();
+}, [])
 
   return (
     <div>
@@ -131,8 +169,9 @@ export default function Serviceproviders() {
               <DotSpinner size={40} speed={0.9} color="red" />
             </div>
           ) : (
-            mockVendor.map((item) => {
-              let linku = `/vendor?vendor_id=${item._id}`;
+                initial.map((item) => {
+              let linku = `/vendor?vendor_id=${item.Vid}`;
+              if(!item.Vid) return null;
               return (
                 <div className="flex  bg-[#000000E8] p-2 md:py-4 md:px-16 justify-start md:justify-between rounded-md">
                   {/* image and rating */}

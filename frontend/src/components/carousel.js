@@ -23,6 +23,8 @@ export default function carousel() {
         centerMode: true,
         centerPadding: '0px'
     }
+
+    
     const renderImages = () => images.map((image, index) => <CarouselItem key={index} image={image}></CarouselItem>)
     return (
         <div className='flex items-center justify-center'>

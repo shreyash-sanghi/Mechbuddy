@@ -80,23 +80,15 @@ export default function Addvendor() {
         e.preventDefault();
         const response = await fetch(`http://localhost:8000/api/auth/addvendor`, {
             method: "POST",
-
-
             headers: {
                 "Content-Type": "application/json",
-
             },
             body: JSON.stringify({ vendorData, }),
-
-
         });
         const json = await response.json();
         console.log(json);
         if (json.success) {
-
             alert("vendor added");
-
-
         }
         else {
             alert("fail");
@@ -177,7 +169,7 @@ export default function Addvendor() {
                         />
                     </>
                 ))}
-                <button type="button" onClick={addPlan} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <button type="button" onClick={addPlan} class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 mt-5 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                     Add Plan
                 </button>
                 {vendorData.addons.map((addon, index) => (
@@ -203,11 +195,13 @@ export default function Addvendor() {
                         />
                     </>
                 ))}
-                <button type="button" onClick={addaddon} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <div className='flex justify-between m-auto mt-5'>
+                <button type="button" onClick={addaddon} class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                     Add Addon
                 </button>
 
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Submit</button>
+                </div>
             </form>
 
         </div>

@@ -13,7 +13,6 @@ router.use(cors());
 
 router.post('/logout' , (req,res) => {
   res.cookie('token' , ' ',{ httpOnly: true, sameSite: 'none' , secure:'true'}).json(true);
-  
 });
 
 // User Signup endpoint
@@ -58,7 +57,6 @@ router.post('/userlogin', async (req, res) => {
     if (!user) {
       return res.status(401).json({ error: 'Invalid email or password' });
     }
-    
     // Check if the password is correct
     const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
     
@@ -68,20 +66,21 @@ router.post('/userlogin', async (req, res) => {
 
     // Create a JWT token
     const authtoken = jwt.sign({ userId: user._id }, JWT_SECRET);
+    // const authtoken = jwt.sign({ userId: user._id }, JWT_SECRET,{
+    //   expiresIn: 60*60
+    // });
     success = true
-
     res.json({ success, authtoken });
   } catch (err) {
     res.status(500).json({ success, error: err.message });
   }
 }); 
-
 //User details usertoken
 router.get('/userinfo', verifyToken, async (req, res) => {
   try {
     // Use req.userId to retrieve user information from the database
-    const user = await Customer.findById(req.userId);
-
+    const id = req.userId;
+    const user = await Customer.findById(id);
     if (!user) {
       return res.status(404).json({ success: false, error: 'User not found' });
     }
@@ -93,6 +92,33 @@ router.get('/userinfo', verifyToken, async (req, res) => {
     res.status(500).json({ success: false, error: err.message });
   }
 });
+//User details usertoken
+router.get('/userinfo', verifyToken, async (req, res) => {
+  try {
+    // Use req.userId to retrieve user information from the database
+    const id = req.userId;
+    const user = await Customer.findById(id);
+    if (!user) {
+      return res.status(404).json({ success: false, error: 'User not found' });
+    }
+
+    // Send user information as a response
+
+    res.json({ success: true, user });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+// Home Page
+router.get('/homepage', async (req, res) => {
+  try {
+    res.cookie('token' , ' ',{ httpOnly: true, sameSite: 'none' , secure:'true'}).json(true);
+   res.sendStatus(202);
+  } catch (err) {
+    res.sendStatus(404);
+  }
+});
+
 
 // Vendor Service Add
 router.post('/addvendor', async (req, res) => {
@@ -130,11 +156,11 @@ router.post('/addvendor', async (req, res) => {
   }
 });
 
+
 router.get('/getvendorbyid/:id', async (req, res) => {
   const vendorId = req.params.id;
   try {
     const vendors = await Vendor.find({ _id: vendorId });
-
     if (vendors) {
       res.json({ success: true, vendors });
     }
@@ -146,11 +172,9 @@ router.get('/getvendorbyid/:id', async (req, res) => {
   }
 })
 
-router.get('/getvendor', async (req, res) => {
-
+router.get('/get_vendors', async (req, res) => {
   try {
     const vendors = await Vendor.find({});
-
     if (vendors) {
       res.json({ success: true, vendors });
     }
@@ -161,29 +185,23 @@ router.get('/getvendor', async (req, res) => {
     res.status(500).json({ success: false, error: error.message });
   }
 })
-
-
 
 // Vendor Login endpoint
 router.post('/vendorlogin', async (req, res) => {
   try {
     // Find the user by email
     const user = await Vendor.findOne({ email: req.body.email });
-
     if (!user) {
       return res.status(401).json({ error: 'Invalid email or password' });
     }
-
     // Check if the password is correct
     const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
 
     if (!isPasswordValid) {
       return res.status(401).json({ error: 'Invalid email or password' });
     }
-
     // Create a JWT token
     const token = jwt.sign({ userId: user._id }, JWT_SECRET);
-
     res.json({ token });
   } catch (err) {
     res.status(500).json({ error: err.message });

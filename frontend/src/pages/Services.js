@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Navbar from "../components/Navbars/Navbar"
 import BottomNavbar from "../components/Navbars/BottomNavbar"
@@ -7,6 +7,7 @@ import Serviceproviders from '../components/Services/Serviceproviders';
 import Serviceinfo from '../components/Services/Serviceinfo';
 import Search from '../components/Services/Search';
 import Footer from '../components/Footer/Footer';
+import axios from 'axios';
 
 const vendors = [
 
@@ -14,7 +15,7 @@ const vendors = [
         vendor_shop_name: "ABC auto parts",
         vendor_address: "mpeb colony khandwa road khargone",
         vendor_price: 500,
-        vendor_service: [ 'service2', 'service3']
+        vendor_service: ['service2', 'service3']
     },
     {
         vendor_shop_name: "Wheels on floor",
@@ -39,12 +40,15 @@ const vendors = [
         vendor_shop_name: "Test data parts",
         vendor_address: "mpeb5 colony khandwa road khargone",
         vendor_price: 900,
-        vendor_service: [ 'service2', 'service3']
+        vendor_service: ['service2', 'service3']
     },
 
 ]
 
+
+
 export default function Services(props) {
+
 
     return (
         <>
@@ -53,7 +57,6 @@ export default function Services(props) {
             <Search service_name={props.service_name} ></Search>
             <Serviceinfo description={props.description}></Serviceinfo>
             <Serviceproviders service_name={props.service_name} vendors={vendors}></Serviceproviders>
-
             <Footer></Footer>
         </>
     )

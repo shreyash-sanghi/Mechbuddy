@@ -40,17 +40,13 @@ export default function Vendor_plans(props) {
     });;
     const cartadd = async (item_title, item_price) => {
         setLoading(true);
-
         const response = await fetch(`http://localhost:8000/api/cart/addcart`, {
             method: "POST",
-
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": localStorage.getItem('token')
             },
             body: JSON.stringify({ item_id: vendor_id, item_title, item_category: "servicing", item_price, item_count: 1 }),
-
-
         });
         const json = await response.json();
         if (json.success) {
@@ -74,18 +70,13 @@ export default function Vendor_plans(props) {
             notify2();
             return;
         }
-
         setAddid(item_id);
         if (item.length === 0 || item[0].item_id === vendor_id) {
-
             await cartadd(item_title, item_price);
-
         }
         else {
             let a = window.confirm("this item is from different vendors, so removing it will clear all the cart ?")
             if (a) {
-
-
                 try {
                     const response = await fetch(`http://localhost:8000/api/cart/deleteallcart`, {
                         method: "DELETE",
@@ -94,19 +85,15 @@ export default function Vendor_plans(props) {
                             "Authorization": localStorage.getItem('token')
                         }
                     });
-
                     const json = await response.json();
-
                     if (json.success) {
                         /* const newCart = item.filter((item) => { return item._id !== id }); */
                         setItem([]);
                         await cartadd(item_title, item_price);
-
                     }
                     else {
                         alert("deletion fail");
                     }
-
                 } catch (error) {
                     console.log(error);
                 }
@@ -193,7 +180,6 @@ export default function Vendor_plans(props) {
                                         </li>
 
                                     </ul>
-                                    < ToastContainer />
                                     <button onClick={(event) => handleaddtocart(event, item._id, item.planname + " Package of Servicing", item.price)} type="button" class="focus:outline-none text-white  font-medium rounded-lg text-sm px-5 py-2.5 mx-12 mb-2 bg-red-600 ">
                                         {addid === item._id && loading ? <div className='flex justify-center'><DotSpinner size={40} speed={0.9} color="white" /></div> : "Book Now"}
                                     </button>
@@ -201,6 +187,7 @@ export default function Vendor_plans(props) {
                                 </div>
 
 
+                                    < ToastContainer />
                             </div>
                         )
                     })}

@@ -16,13 +16,13 @@ import TestimonialSlider from "../components/Homepage/TestimonialSlider"
 
 import WhatsAppButton from "../components/WhatsAppButton"
 import Login from "../components/Authentication/Login"
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import axios from "axios"
 
 
 const Home = () => {
-    
-
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+  // const { fetchData, login, name } = useContext(noteContext);
 
   const openLoginModal = () => {
     setLoginModalOpen(true);
@@ -31,6 +31,28 @@ const Home = () => {
   const closeLoginModal = () => {
     setLoginModalOpen(false);
   };
+
+
+  // setTimeout(() => {
+  //   localStorage.removeItem('token')
+  // }, 60000);
+
+// const getdata = async()=>{
+//    try {
+//     const result = ;
+//     console.log(result);
+//    } catch (error) {
+//     console.log(error);
+//    } 
+// }
+
+  // useEffect(async()=>{
+  //   setTimeout(async()=>{
+  //     console.log("hello");
+  //     // await axios.get("http://localhost:8000/api/auth/homepage");
+  //     // localStorage.removeItem('token')
+  //   },60000)
+  // },[])
    {/* changes -->>> i used whatsapp component and css file to add the whatsapp button with mix blend mode  */}
   return (
     <> 
@@ -50,7 +72,6 @@ const Home = () => {
       <Footer></Footer>
      
   
-   
     </>
   )
 }

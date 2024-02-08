@@ -10,9 +10,6 @@ export default function Cart() {
             <Navbar></Navbar>
             <BottomNavbar />
             <Vendor></Vendor>
-
-
-            
             <Footer></Footer>
         </>
     )

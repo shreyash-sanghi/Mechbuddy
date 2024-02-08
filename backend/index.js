@@ -12,6 +12,7 @@ app.use(cors());  //cors middleware
 
 app.use(express.json());
 app.use('/api/auth', require('./routes/auth')); 
+app.use('/api/auth', require('./routes/auth')); 
 app.use('/api/cart', require('./routes/cart'));
 app.use('/api/payment', require('./routes/payment'));
 app.use('/api/product', require('./routes/products'));
