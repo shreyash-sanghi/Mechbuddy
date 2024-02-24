@@ -139,10 +139,6 @@ const NoteState = (props) => {
     }
 
     //modifcation
-
-
-
-
     return (
         <noteContext.Provider value={{ logoutUser,fetchData, handlegetcart, cartloading,setName, item, setItem, cartflag, setCartFlag, login, name, cartCount, setCartCount, loading1, setLoading1, url1, setUrl1, image1, setImage1, loading2, setLoading2, url2, setUrl2, image2, setImage2, loading3, setLoading3, url3, setUrl3, image3, setImage3, loading4, setLoading4, url4, setUrl4, image4, setImage4, loading5, setLoading5, url5, setUrl5, image5, setImage5, loading6, setLoading6, url6, setUrl6, image6, setImage6, loading7, setLoading7, url7, setUrl7, image7, setImage7, loading8, setLoading8, url8, setUrl8, image8, setImage8, vehicle_model, setVehicleModel, style_description, setStyleDescription, mode, setMode, option, setOptions, formData, setFormData,amount,setAmount }}>
             {props.children}

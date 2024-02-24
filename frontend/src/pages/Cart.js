@@ -11,9 +11,6 @@ export default function Cart() {
             <Navbar></Navbar>
             <BottomNavbar />
             <Cartitem ></Cartitem>
-
-
-            
             <Footer></Footer>
         </>
     )

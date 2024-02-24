@@ -36,6 +36,7 @@ function Login() {
          email,password
     })
     const json = await response.json();
+    
     if (json.success) {
       setLoading(false);
       localStorage.setItem('token', json.authtoken);

@@ -50,7 +50,7 @@ export default function BottomNavbar() {
             <nav class="bg-[#000000] border-gray-200 ">
                 <div class="max-w-screen-xl flex  items-center justify-between   mx-auto p-4">
                     <a href="https://flowbite.com/" class="flex  items-center">
-                    
+                      
                         <span class="text-[#F31D32] self-center text-xl font-bold whitespace-nowrap ">MECH <span class="text-white">BUDDY</span></span>
                     </a>
 

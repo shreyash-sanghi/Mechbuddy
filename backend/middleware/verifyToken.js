@@ -12,9 +12,6 @@ const verifyToken = (req, res, next) => {
   
   // Remove "Bearer " prefix if present
   const cleanToken = token.replace('Bearer ', '');
-  
-  console.log('Received Token:', cleanToken);
-  
   try {
     const decoded = jwt.verify(cleanToken, JWT_SECRET);
     req.userId = decoded.userId;

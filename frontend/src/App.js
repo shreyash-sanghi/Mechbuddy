@@ -43,14 +43,16 @@ import Modificationservices from './pages/Modificationservices';
 
 import Vendorlogin from './components/AdminPanel/Vendorlogin';
 import Test from './pages/Test';
-import Vendordashboard from './pages/Vendordashboard';
+import Vendordashboard from './vendorDashboard/VendorDashboard';
 import { useEffect, useState } from 'react';
 
 
 // contact us
 
 import Contactus from './components/Contactus/Contactus';
+import EditMyPage from './vendorDashboard/EditMyPage';
 
+import Vendoraccount from './vendorDashboard/Vendoraccount';
 function App() {
 
   return (
@@ -102,8 +104,10 @@ function App() {
 
         {/* //admin */}
           <Route exact path="/vendorlogin" element={<Vendorlogin />} ></Route>
-          <Route exact path="/vendor_dashboard" element={<Vendordashboard />} ></Route>
+          <Route exact path="/vendor_dashboard/:id" element={<Vendordashboard />} ></Route>
           <Route exact path="/contactus" element={<Contactus />} ></Route>
+          <Route exact path="/edit_my_page/:id" element={<EditMyPage />} ></Route>
+          <Route exact path="/vendor_account/:id" element={<Vendoraccount/>} ></Route>
 
            <Route exact path="/trial" element={<Trial />} ></Route>
         </Routes>

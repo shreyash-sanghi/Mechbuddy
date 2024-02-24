@@ -3,8 +3,8 @@ import SPDEMO from "../assets/SPDEMO.jpg";
 import { BiSupport } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import settinghero from "../assets/settinghero.png";
+import { motion } from "framer-motion";
 
-import NoteState from '../context/NoteState';
 
 import {
   Card,
@@ -22,6 +22,7 @@ import {
 } from "@heroicons/react/24/solid";
 import axios from "axios";
 import noteContext from "../context/noteContext";
+import Addvendor from "./AdminPanel/Addvendor";
 
 const EditProfile = () => {
   const history = useNavigate();
@@ -29,8 +30,14 @@ const EditProfile = () => {
   const bgStyle = {
     backgroundImage: `url(${settinghero})`,
   };
-  
+  const [selectedType, setSelectedType] = useState(null);
    
+    const {setName} = useContext(noteContext);
+     
+    const handleTypeSelection = (type) => {
+      setSelectedType(type);
+    };      
+      
    
    const {logoutUser} = useContext(noteContext);
   
@@ -43,8 +50,43 @@ const EditProfile = () => {
   
 
   return (
-     <>
-      <section
+      <>
+  {!selectedType && setName && (
+         <div className="flex items-center justify-center h-screen">
+         <motion.div
+           initial={{ opacity: 0, y: -500 }}
+           animate={{ opacity: 1, y: 10   }}
+           transition={{ duration: 0.7 }}
+           className="flex flex-col items-center p-8 bg-white rounded-lg shadow-lg"
+         >
+           <h1 className="text-4xl font-bold mb-6">User Type</h1>
+           <motion.button
+             whileHover={{ scale: 1.1 }}
+             whileTap={{ scale: 1.5 }}
+             className="bg-red-500 text-white px-8 py-4 rounded-lg mb-4 transition-transform ease-in"
+             onClick={() => handleTypeSelection("vendor")}
+           >
+             As a Vendor
+           </motion.button>
+           <motion.button
+             whileHover={{ scale: 1.1 }}
+             whileTap={{ scale: 1.5 }}
+             className="bg-red-500 text-white px-8 py-4 rounded-lg transition-transform ease-in-out"
+             onClick={() => handleTypeSelection("customer")}
+           >
+              As a Customer
+           </motion.button>
+         </motion.div>
+       </div>
+      )};
+      
+      
+      
+       
+       
+      {selectedType === "customer" && (
+           <div>
+       <section
         style={bgStyle}
         className="relative h-[250px] w-full bg-cover bg-center bg-no-repeat flex items-center justify-center"
       >  
@@ -316,8 +358,16 @@ const EditProfile = () => {
           </div>
         </div>
       </div>
+    </div>
+    )};
+      {selectedType === "vendor" && (
+        <>
+          <Addvendor/>
+          <div></div>
+        </>
+      )}
+
     </>
   );
 };
-
 export default EditProfile;
