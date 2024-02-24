@@ -70,19 +70,20 @@ router.post('/userlogin', async (req, res) => {
     //   expiresIn: 60*60
     // });
     success = true
-
-    res.json({ success, authtoken });
+    const role = user.role;
+    res.json({ success, authtoken,user});
   } catch (err) {
     res.status(500).json({ success, error: err.message });
   }
 }); 
 
+
 //User details usertoken
 router.get('/userinfo', verifyToken, async (req, res) => {
   try {
     // Use req.userId to retrieve user information from the database
-    const user = await Customer.findById(req.userId);
-
+    const id = req.userId;
+    const user = await Customer.findById(id);
     if (!user) {
       return res.status(404).json({ success: false, error: 'User not found' });
     }
@@ -94,6 +95,35 @@ router.get('/userinfo', verifyToken, async (req, res) => {
     res.status(500).json({ success: false, error: err.message });
   }
 });
+//User details usertoken
+router.get('/userinfo', verifyToken, async (req, res) => {
+  try {
+    // Use req.userId to retrieve user information from the database
+    const id = req.userId;
+    const user = await Customer.findById(id);
+    if (!user) {
+      return res.status(404).json({ success: false, error: 'User not found' });
+    }
+
+    // Send user information as a response
+
+    res.json({ success: true, user });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+// Home Page
+router.get('/homepage',verifyToken,async (req, res) => {
+  try {
+    const id  = req.userId;
+    const data = await Customer.findById(id);
+    const role = data.role;
+   res.status(202).json({role,id});
+  } catch (err) {
+    res.sendStatus(404);
+  }
+});
+
 
 // Vendor Service Add
 router.post('/addvendor', async (req, res) => {
