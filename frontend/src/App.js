@@ -53,6 +53,7 @@ import Contactus from './components/Contactus/Contactus';
 import EditMyPage from './vendorDashboard/EditMyPage';
 
 import Vendoraccount from './vendorDashboard/Vendoraccount';
+
 function App() {
 
   return (
@@ -108,6 +109,7 @@ function App() {
           <Route exact path="/contactus" element={<Contactus />} ></Route>
           <Route exact path="/edit_my_page/:id" element={<EditMyPage />} ></Route>
           <Route exact path="/vendor_account/:id" element={<Vendoraccount/>} ></Route>
+          <Route exact path="/vendor_form/:id" element={<Addvendor/>} ></Route>
 
            <Route exact path="/trial" element={<Trial />} ></Route>
         </Routes>

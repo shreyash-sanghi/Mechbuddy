@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 export default function Addvendor() {
-
+ const {id} = useParams();
+ const navigate = useNavigate();
     const [vendorData, setVendorData] = useState({
         name: "",
         phone: "",
@@ -76,7 +78,6 @@ export default function Addvendor() {
     };
 
     const handleSubmit = async (e) => {
-
         e.preventDefault();
         const response = await fetch(`http://localhost:8000/api/auth/addvendor`, {
             method: "POST",
@@ -89,6 +90,7 @@ export default function Addvendor() {
         console.log(json);
         if (json.success) {
             alert("vendor added");
+            navigate(`/vendor_dashboard/${id}`)
         }
         else {
             alert("fail");

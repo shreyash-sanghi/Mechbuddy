@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = "mysecret";
 const Customer = require('../models/user_access/Customer');
 const Vendor = require('../models/user_access/Vendor');
+// const  = require('../models/user_access/Vendor');
 const verifyToken = require('../middleware/verifyToken')
 const cors = require('cors');
 
@@ -54,6 +55,7 @@ router.post('/userlogin', async (req, res) => {
   try {
     // Find the user by email
     const user = await Customer.findOne({ email: req.body.email });
+    const vendor_info = await Vendor.findOne({ email: req.body.email });
     if (!user) {
       return res.status(401).json({ error: 'Invalid email or password' });
     }
@@ -70,8 +72,7 @@ router.post('/userlogin', async (req, res) => {
     //   expiresIn: 60*60
     // });
     success = true
-    const role = user.role;
-    res.json({ success, authtoken,user});
+    res.json({ success, authtoken,user,vendor_info});
   } catch (err) {
     res.status(500).json({ success, error: err.message });
   }

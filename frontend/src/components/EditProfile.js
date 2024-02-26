@@ -30,13 +30,13 @@ const EditProfile = () => {
   const bgStyle = {
     backgroundImage: `url(${settinghero})`,
   };
-  const [selectedType, setSelectedType] = useState(null);
+  // const [selectedType, setSelectedType] = useState(null);
    
     const {setName} = useContext(noteContext);
      
-    const handleTypeSelection = (type) => {
-      setSelectedType(type);
-    };      
+    // const handleTypeSelection = (type) => {
+    //   setSelectedType(type);
+    // };      
       
    
    const {logoutUser} = useContext(noteContext);
@@ -51,41 +51,7 @@ const EditProfile = () => {
 
   return (
       <>
-  {!selectedType && setName && (
-         <div className="flex items-center justify-center h-screen">
-         <motion.div
-           initial={{ opacity: 0, y: -500 }}
-           animate={{ opacity: 1, y: 10   }}
-           transition={{ duration: 0.7 }}
-           className="flex flex-col items-center p-8 bg-white rounded-lg shadow-lg"
-         >
-           <h1 className="text-4xl font-bold mb-6">User Type</h1>
-           <motion.button
-             whileHover={{ scale: 1.1 }}
-             whileTap={{ scale: 1.5 }}
-             className="bg-red-500 text-white px-8 py-4 rounded-lg mb-4 transition-transform ease-in"
-             onClick={() => handleTypeSelection("vendor")}
-           >
-             As a Vendor
-           </motion.button>
-           <motion.button
-             whileHover={{ scale: 1.1 }}
-             whileTap={{ scale: 1.5 }}
-             className="bg-red-500 text-white px-8 py-4 rounded-lg transition-transform ease-in-out"
-             onClick={() => handleTypeSelection("customer")}
-           >
-              As a Customer
-           </motion.button>
-         </motion.div>
-       </div>
-      )};
-      
-      
-      
-       
-       
-      {selectedType === "customer" && (
-           <div>
+            <div>
        <section
         style={bgStyle}
         className="relative h-[250px] w-full bg-cover bg-center bg-no-repeat flex items-center justify-center"
@@ -359,13 +325,6 @@ const EditProfile = () => {
         </div>
       </div>
     </div>
-    )};
-      {selectedType === "vendor" && (
-        <>
-          <Addvendor/>
-          <div></div>
-        </>
-      )}
 
     </>
   );

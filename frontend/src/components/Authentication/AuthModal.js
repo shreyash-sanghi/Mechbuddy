@@ -20,6 +20,8 @@ function AuthModal() {
   const [isVendor, setIsVendor] = useState(false);
 
   async function handleLoginSubmit(e) {
+    try {
+
     e.preventDefault();
     setLoading(true);
     const response = await fetch(`http://localhost:8000/api/auth/userlogin`, {
@@ -31,14 +33,21 @@ function AuthModal() {
     });
     const json = await response.json();
     const role = json.user.role;
+    const vendor_info = json.vendor_info;
     const id = json.user._id;
     if (json.success) {
       setLoading(false);
       localStorage.setItem('token', json.authtoken);
+      console.log(role)
+
 
       if (role === "vendor") {
         // If the user is a vendor, navigate to the vendor-specific page
-        navigate(`/vendor_dashboard/${id}`)
+        if(vendor_info===undefined){
+          navigate(`/vendor_form/${id}`)
+         }else{
+           navigate(`/vendor_dashboard/${id}`)
+         }
          // Replace with the actual vendor dashboard page
       } else {
         // If the user is a customer, navigate to the main page
@@ -51,6 +60,11 @@ function AuthModal() {
       alert('fail');
      
     }
+          
+  } catch (error) {
+    setLoading(false);
+    alert('fail');   
+  }
   }
 
 
@@ -217,6 +231,7 @@ return (
           <div>
             <label className="block text-sm font-bold text-black">Type</label>
             <select id="role" name="role" value={role} onChange={handleChange} className="bg-red-500 border rounded focus:outline-none text-xs font-medium leading-none text-white py-3 w-full pl-3 mt-2">
+              <option ></option>
               <option value="user">Customer</option>
               <option value="vendor">Vendor</option>
             </select>
