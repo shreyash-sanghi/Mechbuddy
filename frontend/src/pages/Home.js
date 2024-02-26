@@ -18,7 +18,6 @@ import WhatsAppButton from "../components/WhatsAppButton"
 import Login from "../components/Authentication/Login"
 import { useContext, useEffect, useState } from "react"
 import axios from "axios"
-<<<<<<< HEAD
 import { useNavigate } from "react-router-dom"
 
 
@@ -28,13 +27,6 @@ const Home = () => {
   // const { fetchData, login, name } = useContext(noteContext);
   const token = localStorage.getItem('token');
 
-=======
-
-
-const Home = () => {
-  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
-  // const { fetchData, login, name } = useContext(noteContext);
->>>>>>> f7ab62fe781f92ec3aea0f9c7b838146f23cba14
 
   const openLoginModal = () => {
     setLoginModalOpen(true);
@@ -45,7 +37,6 @@ const Home = () => {
   };
 
 
- HEAD
 
 
 const getdata = async()=>{
@@ -66,36 +57,12 @@ const getdata = async()=>{
     console.log(error);
    } 
 }
- console.log(token);
+
   useEffect(()=>{
-    if(token != null){
+    if(token!==null){
     getdata()
     }
   },[])
-
-
-=======
-  // setTimeout(() => {
-  //   localStorage.removeItem('token')
-  // }, 60000);
-
-// const getdata = async()=>{
-//    try {
-//     const result = ;
-//     console.log(result);
-//    } catch (error) {
-//     console.log(error);
-//    } 
-// }
-
-  // useEffect(async()=>{
-  //   setTimeout(async()=>{
-  //     console.log("hello");
-  //     // await axios.get("http://localhost:8000/api/auth/homepage");
-  //     // localStorage.removeItem('token')
-  //   },60000)
-  // },[])
->>>>>>> f7ab62fe781f92ec3aea0f9c7b838146f23cba14
    {/* changes -->>> i used whatsapp component and css file to add the whatsapp button with mix blend mode  */}
   return (
     <> 

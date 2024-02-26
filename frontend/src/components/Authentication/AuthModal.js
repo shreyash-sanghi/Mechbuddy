@@ -27,42 +27,24 @@ function AuthModal() {
       headers: {
         "Content-Type": "application/json",
       },
-<<<<<<< HEAD
       body: JSON.stringify({ email:email, password:password}),
-=======
-      body: JSON.stringify({ email:email, password:password , role:role}),
->>>>>>> f7ab62fe781f92ec3aea0f9c7b838146f23cba14
     });
     const json = await response.json();
     const role = json.user.role;
     const id = json.user._id;
     if (json.success) {
       setLoading(false);
-<<<<<<< HEAD
       localStorage.setItem('token', json.authtoken);
 
       if (role === "vendor") {
         // If the user is a vendor, navigate to the vendor-specific page
         navigate(`/vendor_dashboard/${id}`)
-=======
-      
-      localStorage.setItem('token', json.authtoken);
-      
-      if (role === "vendor") {
-        // If the user is a vendor, navigate to the vendor-specific page
-        
-        navigate('/')
->>>>>>> f7ab62fe781f92ec3aea0f9c7b838146f23cba14
          // Replace with the actual vendor dashboard page
       } else {
         // If the user is a customer, navigate to the main page
         navigate('/');
     
       }
-<<<<<<< HEAD
-=======
-      
->>>>>>> f7ab62fe781f92ec3aea0f9c7b838146f23cba14
     }
     else {
       setLoading(false);
@@ -164,19 +146,8 @@ return (
             </select>
           </div> */}
           
-<<<<<<< HEAD
           <div className="flex  justify-between mx-auto items-center">
           <button
-=======
-          <div className="flex items-center">
-            <Link
-              to="/forgot-password"
-              className="text-md text-gray-800 hover:underline focus:outline-none focus:underline mr-4"
-            >
-              Forgot Password?
-            </Link>
-            <button
->>>>>>> f7ab62fe781f92ec3aea0f9c7b838146f23cba14
               type="submit"
               className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300"
             >
