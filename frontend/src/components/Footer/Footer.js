@@ -128,22 +128,24 @@ const Footer = () => {
                 </li>
 
                 <li>
-                  <Link to='/' class="text-white transition hover:opacity-75">
+                  <Link to='/privacypolicy' class="text-white transition hover:opacity-75">
                     Privacy Policy
                   </Link>
                 </li>
 
                 <li>
-                  <Link to='/' class="text-white transition hover:opacity-75">
+                  <Link to='/returnpolicy' class="text-white transition hover:opacity-75">
                     Return Policy
                   </Link>
                 </li>
-
+                
                 <li>
-                  <Link to='/' class="text-white transition hover:opacity-75">
+                  <Link to='/refundpolicy' class="text-white transition hover:opacity-75">
                     Refund Policy
                   </Link>
                 </li>
+
+          
 
               </ul>
             </div>

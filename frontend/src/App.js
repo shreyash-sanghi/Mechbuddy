@@ -53,6 +53,9 @@ import Contactus from './components/Contactus/Contactus';
 import EditMyPage from './vendorDashboard/EditMyPage';
 
 import Vendoraccount from './vendorDashboard/Vendoraccount';
+import PrivacyPolicy from './components/Policy/PrivacyPolicy'
+import RefundPolicy from './components/Policy/RefundPolicy'
+import ReturnPolicy from './components/Policy/ReturnPolicy'
 
 function App() {
 
@@ -112,6 +115,12 @@ function App() {
           <Route exact path="/vendor_form/:id" element={<Addvendor/>} ></Route>
 
            <Route exact path="/trial" element={<Trial />} ></Route>
+
+           {/* Policy */}
+           <Route exact path="/privacypolicy" element={<PrivacyPolicy />} ></Route>
+           <Route exact path="/refundpolicy" element={<RefundPolicy />} ></Route>
+           <Route exact path="/returnpolicy" element={<ReturnPolicy />} ></Route>
+
         </Routes>
 
       
