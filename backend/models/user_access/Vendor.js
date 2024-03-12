@@ -11,6 +11,9 @@ const vendorPlanSchema = new Schema({
     price: {
         type: Number,
         required: true
+    },
+    card_switch:{
+        type:Boolean
     }
 });
 

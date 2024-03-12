@@ -127,6 +127,28 @@ router.post("/edit_vendor/:id",verifyToken,async(req,res)=>{
     res.status(404).json({error})
   }
 })
+router.post("/update_vendor_card/:id",verifyToken,async(req,res)=>{
+  try {
+    const id= req.params.id;
+    console.log(id)
+//     const data = await Vendor.findByIdAndUpdate(id,{
+//       plans: req.body.plans,
+// });
+const Emaildata = await Customer.findById(id);
+const email = Emaildata.email;
+const Vid = await Vendor.findOne({email});
+let plan = Vid.plans;
+  const card =  req.body.card_switch;
+   await Vendor.findOneAndUpdate({email},
+    {$set:{
+      [`plans.${req.body.index}.card_switch`]:card
+    }});
+       res.sendStatus(202);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({error})
+  }
+})
 
 router.delete("/delete_cusomer_order/:id",verifyToken,async(req,res)=>{
   try {

@@ -36,6 +36,7 @@ const VendorDashboardNav = ()=>{
           </div>
           <div class="flex items-center space-x-3 sm:mt-7 mt-4">
             <Link to={`/vendor_dashboard/${id}`} class="px-3   text-white  hover:border-b-2 hover:border-white pb-1.5">User</Link>
+            <Link to={`/vendor_plan/${id}`} class="px-3   text-white  hover:border-b-2 hover:border-white pb-1.5">Plans</Link>
             <Link to={`/edit_my_page/${id}`} class="px-3 whitespace-nowrap  border-b-2 border-transparent text-white pb-1.5">My Offer</Link>
             <Link to={`/vendor_account/${id}`} class="px-3 border-b-2 border-transparent text-white pb-1.5 ">Profile</Link>
             <button onClick={handleLogout} class="px-3 whitespace-nowrap border-b-2 border-transparent text-white pb-1.5 ">Log Out</button>

@@ -51,6 +51,7 @@ import { useEffect, useState } from 'react';
 
 import Contactus from './components/Contactus/Contactus';
 import EditMyPage from './vendorDashboard/EditMyPage';
+import VendorCard from './vendorDashboard/VendorCard';
 
 import Vendoraccount from './vendorDashboard/Vendoraccount';
 import PrivacyPolicy from './components/Policy/PrivacyPolicy'
@@ -113,6 +114,7 @@ function App() {
           <Route exact path="/edit_my_page/:id" element={<EditMyPage />} ></Route>
           <Route exact path="/vendor_account/:id" element={<Vendoraccount/>} ></Route>
           <Route exact path="/vendor_form/:id" element={<Addvendor/>} ></Route>
+          <Route exact path="/vendor_plan/:id" element={<VendorCard/>} ></Route>
 
            <Route exact path="/trial" element={<Trial />} ></Route>
 

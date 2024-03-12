@@ -34,6 +34,7 @@ function AuthModal() {
     const json = await response.json();
     const role = json.user.role;
     const vendor_info = json.vendor_info;
+    console.log(vendor_info)
     const id = json.user._id;
     if (json.success) {
       setLoading(false);
@@ -43,7 +44,7 @@ function AuthModal() {
 
       if (role === "vendor") {
         // If the user is a vendor, navigate to the vendor-specific page
-        if(vendor_info===undefined){
+        if(vendor_info=== undefined || vendor_info=== null ){
           navigate(`/vendor_form/${id}`)
          }else{
            navigate(`/vendor_dashboard/${id}`)
